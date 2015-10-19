@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<style type="text/css">
+    #nav-dock {
+      position: fixed;
+      right: 15px;
+      top: 35%;
+    }
+
+    body {
+      background: #ededed;
+      width: 800px;
+      margin: 40px auto 100px;
+    }
+    a {
+      color: #66F;
+      text-decoration: none;
+      outline: none;
+    }
+    .post {
+      height: 600px;
+      margin: 20px 0;
+      padding: 5px 20px;
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+    #comments {
+      height: 1000px;
+      margin: 20px 0;
+      padding: 5px 20px;
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+    #reply {
+      height: 800px;
+      margin: 20px 0;
+      padding: 5px 20px;
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+    #nav-dock {
+      position: fixed;
+      right: 15px;
+      top: 35%;
+    }
+    #nav-dock a {
+      display: block;
+      padding: 3px 10px;
+      margin: 3px 0;
+      background: #666;
+      color: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+    #nav-dock a:hover {
+      background: #000;
+    }
+    #nav-dock #next {
+      margin-bottom: 10px;
+    }
+</style>
+
+<script type="text/javascript">
+$(function() {
+
+    function scroll(direction) {
+
+        var scroll, i,
+                positions = [],
+                here = $(window).scrollTop(),
+                collection = $('.post');
+
+        collection.each(function() {
+            positions.push(parseInt($(this).offset()['top'],10));
+        });
+
+        for(i = 0; i < positions.length; i++) {
+            if (direction == 'next' && positions[i] > here) { scroll = collection.get(i); break; }
+            if (direction == 'prev' && i > 0 && positions[i] >= here) { scroll = collection.get(i-1); break; }
+        }
+
+        if (scroll) {
+            $.scrollTo(scroll, {
+                duration: 750       
+            });
+        }
+
+        return false;
+    }
+
+    $("#next,#prev").click(function() {        
+        return scroll($(this).attr('id'));        
+    });
+
+    $(".scrolltoanchor").click(function() {
+        $.scrollTo($($(this).attr("href")), {
+            duration: 750
+        });
+        return false;
+    });
+
+});
+</script>
+</head>
+<body>
+  <div id="nav-dock"> 
+  <a id="prev" href="#">↑ Prev</a> 
+  <a id="next" href="#">↓ Next</a>
+  <a href="#comments" class="scrolltoanchor">Comments</a> 
+  <a href="#reply" class="scrolltoanchor">Reply</a> 
+</div>
+  <div class="post">
+  Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+
+Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.<br/><br/>
+
+</div>
+
+<div class="post">
+  Cevadis im ampola pa arma uma pindureta. Nam varius eleifend orci, sed viverra nisl condimentum ut. Donec eget justis enim. Atirei o pau no gatis. Viva Forevis aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Copo furadis é disculpa de babadis, arcu quam euismod magna, bibendum egestas augue arcu ut est. Delegadis gente finis. In sit amet mattis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis. Pellentesque viverra accumsan ipsum elementum gravidis.<br/><br/>
+</div>
+
+<div class="post">
+  Cevadis im ampola pa arma uma pindureta. Nam varius eleifend orci, sed viverra nisl condimentum ut. Donec eget justis enim. Atirei o pau no gatis. Viva Forevis aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Copo furadis é disculpa de babadis, arcu quam euismod magna, bibendum egestas augue arcu ut est. Delegadis gente finis. In sit amet mattis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis. Pellentesque viverra accumsan ipsum elementum gravidis.
+
+  Forevis aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Copo furadis é disculpa de babadis, arcu quam euismod magna, bibendum egestas augue arcu ut est. Etiam ultricies tincidunt ligula, sed accumsan sapien mollis et. Delegadis gente finis. In sit amet mattis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis. Pellentesque viverra accumsan ipsum elementum gravida. Quisque vitae metus id massa tincidunt iaculis sed sed purus. Vestibulum viverra lobortis faucibus. Vestibulum et turpis.
+
+  Vitis e adipiscing enim. Nam varius eleifend orci, sed viverra nisl condimentum ut. Donec eget justo enim. Atirei o pau no gatis. Quisque dignissim felis quis sapien ullamcorper varius tempor sem varius. Vivamus lobortis posuere facilisis. Sed auctor eros ac sapien sagittis accumsan. Integer semper accumsan arcu, at aliquam nisl sollicitudin non. Nullam pellentesque metus nec libero laoreet vitae vestibulum ante ultricies. Phasellus non mollis purus. Integer vel lacus dolor. Proin eget mi nec mauris convallis ullamcorper vel ac nulla. Nulla et semper metus.
+</div>
+ 
+<div id="comments">Comments</div>
+<div id="reply">Reply</div>
+
+</body>
+</html>
